@@ -165,7 +165,8 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
   .process-intro { position: static; }
   .process h2 { font-size: 28px; }
   .steps { gap: 72px; padding: 24px 0 24px; }
-  .step h3, .card h3 { font-size: 20px; }
+  .step h3 { font-size: 20px; }
+  .card h3 { font-size: 18px; }
 }
 
 /* About */
@@ -268,7 +269,7 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
 .services header { display: grid; gap: 18px; max-width: 760px; }
 .eyebrow { margin: 0; font-size: var(--step--1); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
 .services h2 { margin: 0; font-family: var(--font); font-weight: 800; font-size: 32px; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
-.services .intro, .work .intro { margin: 0; font-size: var(--step-1); line-height: 1.45; color: var(--ink-soft); max-width: 40ch; }
+.services .intro, .work .intro { margin: 0; font-size: var(--step-0); line-height: 1.6; color: var(--ink-soft); max-width: 40ch; } /* same size as the process intro */
 .cards { display: flex; flex-wrap: wrap; gap: clamp(16px, 2vw, 28px); }
 .cards .card { width: 350px; max-width: 100%; height: auto; }
 .card {
@@ -282,7 +283,7 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
 .card .head { display: flex; align-items: center; gap: 18px; }
 .card .icon { flex: none; width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center; background: color-mix(in srgb, var(--accent) 14%, white); color: var(--accent); }
 .card .icon svg { width: 26px; height: 26px; }
-.card h3 { margin: 0; font-family: var(--font); font-weight: 600; font-size: 26px; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.card h3 { margin: 0; font-family: var(--font); font-weight: 600; font-size: 22px; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
 .card .lead { margin: 0; font-size: inherit; font-weight: 400; line-height: 1.65; color: var(--ink); opacity: 0.86; }
 .card .body { margin: 0; color: var(--ink); opacity: 0.82; line-height: 1.65; }
 @media (max-width: 960px) { .cards { grid-template-columns: minmax(0, 1fr); } }
@@ -312,7 +313,6 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
   .services { padding-top: 48px; padding-bottom: 32px; gap: 24px; }
   .contact { padding-top: 24px; padding-bottom: 64px; }
   .work h2, .services h2, .contact h2 { font-size: 28px; }
-  .work .work-head .intro, .services .intro { font-size: 1.05rem; }
   .p-text h3 { font-size: 22px; }
   .stack { gap: 16px; }
 }
