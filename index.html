@@ -262,12 +262,6 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
 @media (prefers-reduced-motion: reduce) {
   .project { position: relative; top: auto; }
 }
-/* Website preview: a full-page capture that slowly pans top to bottom and back
-   inside the media window. Pauses on hover; still under reduced motion. */
-.site-preview img { object-position: 50% 0%; animation: site-pan 48s ease-in-out 1s infinite alternate; }
-.site-preview:hover img { animation-play-state: paused; }
-@keyframes site-pan { to { object-position: 50% 100%; } }
-@media (prefers-reduced-motion: reduce) { .site-preview img { animation: none; } }
 
 /* Expertise & services */
 .services { padding: clamp(64px, 12vh, 140px) var(--gutter) clamp(64px, 12vh, 120px); display: grid; gap: clamp(36px, 6vh, 64px); }
@@ -361,7 +355,12 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
           <h3>Lōkahi Orthodontics</h3>
           <p>Landing page for a new orthodontics practice, built so the team can edit it themselves</p>
         </div>
-        <div class="p-media site-preview" style="--ar: 1440 / 900"><img src="media/lokahi-site.webp" alt="The Lōkahi Orthodontics website, from the hero with its sage triangles and family photo down to the booking form and sage footer" width="720" height="6258" loading="lazy"></div>
+        <div class="p-media" style="--ar: 1440 / 900">
+          <video class="clip" poster="media/lokahi-site-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Scrolling through the Lōkahi Orthodontics website: sage triangles settle around the hero photo, the office photos slide past, and three triangles assemble into the Lōkahi shape">
+            <source src="media/lokahi-site.mp4" type="video/mp4">
+            <source src="media/lokahi-site.webm" type="video/webm">
+          </video>
+        </div>
       </article>
       <article class="project" style="--i: 2; --accent: var(--blush)">
         <div class="p-text">
