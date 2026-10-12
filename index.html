@@ -226,6 +226,7 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
 .contact-card { max-width: 1000px; margin: 0 auto; padding: clamp(24px, 4vw, 48px); border-radius: 24px; background: var(--card-glass); -webkit-backdrop-filter: blur(28px) saturate(1.1); backdrop-filter: blur(28px) saturate(1.1); display: grid; gap: 12px; }
 .contact h2 { margin: 0; font-family: var(--font); font-weight: 800; font-size: 32px; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); }
 .contact p { margin: 0; color: var(--ink-soft); max-width: 52ch; }
+.contact .book-call { justify-self: start; margin-top: 8px; }
 
 /* Previous clients */
 .clients { display: grid; gap: clamp(12px, 2.2vh, 22px); width: 100%; }
@@ -489,8 +490,10 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
   </section>
   <section class="contact" id="contact" aria-labelledby="contact-title">
     <div class="contact-card">
-      <h2 id="contact-title">Let’s talk about your practice</h2>
-      <p>A 15-minute intro call to hear about your business, your customers, and your goals. No pressure and no obligation.</p>
+      <h2 id="contact-title">Let’s get set up with your practice</h2>
+      <p>A 30-minute intro call to hear about your business, your customers, and your goals. No pressure and no obligation.</p>
+      <!-- Opens Calendly's scheduler over the page; without JavaScript it opens Calendly in a new tab -->
+      <a class="cta-primary book-call" href="https://calendly.com/studioeightwebco/30min" target="_blank" rel="noopener">Book a 30-minute call <span aria-hidden="true">→</span></a>
     </div>
   </section>
 </main>
@@ -712,5 +715,34 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
 })();
 </script>
 
+
+<!-- Calendly: the "Book a 30-minute call" button opens the scheduler as a popup.
+     The widget loads only on first click, so it costs nothing until it's used. -->
+<script>
+(function () {
+  var URL = "https://calendly.com/studioeightwebco/30min?hide_gdpr_banner=1";
+  var btn = document.querySelector(".book-call");
+  if (!btn) return;
+  var loading = null;
+  function load() {
+    if (loading) return loading;
+    loading = new Promise(function (resolve, reject) {
+      var css = document.createElement("link");
+      css.rel = "stylesheet"; css.href = "https://assets.calendly.com/assets/external/widget.css";
+      document.head.appendChild(css);
+      var js = document.createElement("script");
+      js.src = "https://assets.calendly.com/assets/external/widget.js"; js.async = true;
+      js.onload = resolve; js.onerror = reject;
+      document.head.appendChild(js);
+    });
+    return loading;
+  }
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+    load().then(function () { window.Calendly.initPopupWidget({ url: URL }); })
+          .catch(function () { window.open(btn.href, "_blank", "noopener"); });
+  });
+})();
+</script>
 </body>
 </html>
