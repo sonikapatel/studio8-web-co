@@ -235,6 +235,10 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
 .contact h2 { margin: 0; font-family: var(--font); font-weight: 800; font-size: 32px; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); }
 .contact p { margin: 0; color: var(--ink-soft); max-width: 52ch; }
 .contact .book-call { justify-self: start; margin-top: 8px; }
+.site-foot { padding: 0 var(--gutter) 40px; }
+.site-foot-inner { max-width: 1000px; margin: 0 auto; padding-top: 20px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: var(--step--1); color: var(--ink-soft); }
+.site-foot a { color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 760px) { .site-foot { padding: 0 16px 32px; } }
 
 /* Previous clients */
 .clients { display: grid; gap: clamp(12px, 2.2vh, 22px); width: 100%; }
@@ -628,6 +632,12 @@ dialog.case::backdrop { background: var(--scrim); }
     </div>
   </section>
 </main>
+<footer class="site-foot">
+  <div class="site-foot-inner">
+    <span>© 2026 Studio8 Web Co.</span>
+    <a href="mailto:studioeightwebco@gmail.com">studioeightwebco@gmail.com</a>
+  </div>
+</footer>
 <dialog class="case" id="case" aria-labelledby="case-title">
   <div class="case-bar"><span class="crumb">Studio8 case study</span><button class="case-close" type="button">Close <span aria-hidden="true">✕</span></button></div>
   <div class="case-body"></div>
