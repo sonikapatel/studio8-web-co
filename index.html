@@ -466,9 +466,9 @@ dialog.case::backdrop { background: var(--scrim); }
       </article>
       <article class="project" data-case="fika" data-pal="2" style="--i: 4; --accent: var(--blue)">
         <div class="p-text">
-          <span class="p-kind">Marketing website</span>
+          <span class="p-kind">Brand &amp; marketing website</span>
           <h3>Fika</h3>
-          <p>Marketing landing page for a membership community that has connected ~2,500 creatives over coffee</p>
+          <p>Brand and marketing landing page for a membership community that has connected ~2,500 creatives over coffee</p>
           <a class="p-open" href="#case-fika">View project <span aria-hidden="true">→</span></a>
         </div>
         <div class="p-media" style="--ar: 960 / 508">
@@ -904,10 +904,14 @@ dialog.case::backdrop { background: var(--scrim); }
       ]
     },
     fika: {
-      kind: "Marketing website", title: "Fika",
-      lede: "Fika is a membership community that connects creatives over coffee, inspired by the Swedish ritual. It has connected ~2,500 creatives through biweekly matchmaking at cafes and events at partner locations. I designed and built its marketing landing page, which introduces the community and invites creatives to apply.",
-      meta: [["Services", "Marketing landing page"]],
+      kind: "Brand &amp; marketing website", title: "Fika",
+      lede: "Fika is a membership community that connects creatives over coffee, inspired by the Swedish ritual. It has connected ~2,500 creatives through biweekly matchmaking at cafes and events at partner locations. I created the brand and designed and built its marketing landing page, which introduces the community and invites creatives to apply.",
+      meta: [["Services", "Brand identity, social media, marketing landing page"]],
       sections: [
+        { title: "Brand", text: "The brand guidelines: logo, colors, typography, textures, photography style and illustrations.", items: [
+          img("fika/brand-guide.jpg", "Fika brand guidelines: logo, colors, typography, textures, photography style and illustrations", "") ] },
+        { title: "Social media", items: [
+          img("fika/social.jpg", "Three Fika social posts inviting creatives to meet over coffee", "") ] },
         { title: "Landing page", text: "The marketing landing page, from the headline to the member work.", site: { video: "media/fika-site.mp4", poster: "media/fika-site-poster.jpg", label: "fikacreatives.co", alt: "Scrolling through the Fika landing page" }, items: [] }
       ]
     }
