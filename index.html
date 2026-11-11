@@ -354,6 +354,36 @@ dialog.case::backdrop { background: var(--scrim); }
 @keyframes svc-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .svc-icon::before, .svc-icon::after { transition: none; } .svc[open] .svc-body { animation: none; } }
 
+/* Inquiry form */
+.inquiry { padding: 0 var(--gutter) clamp(64px, 12vh, 120px); display: grid; gap: clamp(24px, 4vh, 36px); }
+.inquiry > * { width: 100%; max-width: 1000px; margin-inline: auto; }
+.inquiry header { display: grid; gap: 14px; }
+.inquiry h2 { margin: 0; font-family: var(--font); font-weight: 800; font-size: 32px; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); }
+.inquiry .intro { margin: 0; font-size: var(--step-0); line-height: 1.6; color: var(--ink-soft); max-width: 62ch; }
+.inquiry-card { display: grid; gap: 26px; padding: clamp(24px, 4vw, 48px); border-radius: 24px; background: var(--card-glass); -webkit-backdrop-filter: blur(28px) saturate(1.1); backdrop-filter: blur(28px) saturate(1.1); }
+.inquiry .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 32px; }
+.inquiry .fld { display: grid; gap: 8px; margin: 0; padding: 0; border: 0; min-width: 0; }
+.inquiry .fld > span, .inquiry legend { font-size: 15px; font-weight: 600; color: var(--ink); padding: 0; }
+.inquiry .fld b, .inquiry legend b { color: #b0584c; font-weight: 700; margin-left: 2px; }
+.inquiry input:not([type=checkbox]), .inquiry textarea { font: inherit; font-size: 16px; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 45%, transparent); border-radius: 0; padding: 8px 0; width: 100%; resize: vertical; }
+.inquiry input::placeholder { color: var(--ink-soft); opacity: .8; }
+.inquiry input:focus, .inquiry textarea:focus { outline: none; border-bottom: 2px solid var(--ink); padding-bottom: 7px; }
+.inquiry .chk-grid { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 10px; }
+.inquiry .chk { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: var(--ink); cursor: pointer; }
+.inquiry .chk input { width: 18px; height: 18px; margin: 0; accent-color: var(--ink); }
+.inquiry [aria-invalid="true"] { border-bottom-color: #b0584c !important; }
+.inquiry .chks[aria-invalid="true"] legend { color: #b0584c; }
+.inquiry .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.inquiry .form-note { margin: 0; min-height: 1.4em; font-size: 15px; color: var(--ink); }
+.inquiry .form-note.err { color: #b0584c; }
+.inquiry button { justify-self: start; border: 0; cursor: pointer; font: inherit; }
+.inquiry button[disabled] { opacity: .6; cursor: wait; }
+@media (max-width: 760px) {
+  .inquiry { padding-left: 16px; padding-right: 16px; }
+  .inquiry .row2 { grid-template-columns: 1fr; }
+  .inquiry h2 { font-size: 28px; }
+}
+
 /* Client reviews */
 .reviews { padding: clamp(48px, 10vh, 120px) var(--gutter) clamp(16px, 4vh, 40px); display: grid; gap: clamp(24px, 4vh, 40px); }
 .reviews header { display: grid; gap: 18px; }
@@ -747,6 +777,42 @@ dialog.case::backdrop { background: var(--scrim); }
       <a class="cta-primary book-call" href="https://calendly.com/studioeightwebco/20min" target="_blank" rel="noopener">Book a 20-minute call <span aria-hidden="true">→</span></a>
     </div>
   </section>
+  <section class="inquiry" id="inquiry" aria-labelledby="inquiry-title">
+    <header>
+      <p class="eyebrow">Start a project</p>
+      <h2 id="inquiry-title">Let’s chat</h2>
+      <p class="intro">Whether you’re starting a new brand, refreshing your website, or just exploring what’s possible, I’d love to hear from you. Share a few details and I’ll reply personally with next steps.</p>
+    </header>
+    <form class="inquiry-card" id="inquiry-form" action="https://formsubmit.co/studioeightwebco@gmail.com" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="New Studio8 inquiry">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="row2">
+        <label class="fld"><span>First name<b aria-hidden="true">*</b></span><input name="First name" autocomplete="given-name" required></label>
+        <label class="fld"><span>Last name<b aria-hidden="true">*</b></span><input name="Last name" autocomplete="family-name" required></label>
+      </div>
+      <label class="fld"><span>Email<b aria-hidden="true">*</b></span><input type="email" name="email" autocomplete="email" required></label>
+      <label class="fld"><span>Business name</span><input name="Business name" autocomplete="organization"></label>
+      <label class="fld"><span>Current website</span><input name="Current website" inputmode="url" placeholder="Or your Instagram if you don’t have a site yet"></label>
+      <fieldset class="fld chks" id="interests">
+        <legend>What are you interested in?<b aria-hidden="true">*</b></legend>
+        <div class="chk-grid">
+            <label class="chk"><input type="checkbox" name="interests" value="Brand identity"><span>Brand identity</span></label>
+            <label class="chk"><input type="checkbox" name="interests" value="Website design &amp; build"><span>Website design &amp; build</span></label>
+            <label class="chk"><input type="checkbox" name="interests" value="SEO &amp; AEO"><span>SEO &amp; AEO</span></label>
+            <label class="chk"><input type="checkbox" name="interests" value="Social media templates"><span>Social media templates</span></label>
+            <label class="chk"><input type="checkbox" name="interests" value="Booking setup"><span>Booking setup</span></label>
+            <label class="chk"><input type="checkbox" name="interests" value="Something else (tell me below)"><span>Something else (tell me below)</span></label>
+        </div>
+      </fieldset>
+      <label class="fld"><span>Tell me a little more about what you have in mind<b aria-hidden="true">*</b></span><textarea name="Details" rows="3" required></textarea></label>
+      <label class="fld"><span>How did you hear about Studio8?</span><input name="How they heard"></label>
+      <label class="fld"><span>Why do you want to work together?</span><textarea name="Why work together" rows="2"></textarea></label>
+      <p class="form-note" role="status" aria-live="polite"></p>
+      <button class="cta-primary" type="submit">Send <span aria-hidden="true">→</span></button>
+    </form>
+  </section>
 </main>
 <footer class="site-foot">
   <div class="site-foot-inner">
@@ -978,6 +1044,43 @@ dialog.case::backdrop { background: var(--scrim); }
 })();
 </script>
 
+
+<!-- Inquiry form: validates, then sends through FormSubmit's AJAX endpoint and thanks the visitor in place.
+     Without JavaScript the form posts to FormSubmit directly. -->
+<script>
+(function () {
+  var form = document.getElementById("inquiry-form");
+  if (!form || !window.fetch) return;
+  var note = form.querySelector(".form-note"), btn = form.querySelector("button[type=submit]");
+  var group = form.querySelector("#interests");
+  function say(msg, err) { note.textContent = msg; note.classList.toggle("err", !!err); }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var bad = null;
+    Array.prototype.forEach.call(form.querySelectorAll("[required]"), function (f) {
+      var ok = f.value.trim() !== "" && (f.type !== "email" || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.value.trim()));
+      f.setAttribute("aria-invalid", ok ? "false" : "true");
+      if (!ok && !bad) bad = f;
+    });
+    var picked = Array.prototype.map.call(form.querySelectorAll("input[name=interests]:checked"), function (c) { return c.value; });
+    group.setAttribute("aria-invalid", picked.length ? "false" : "true");
+    if (!picked.length && !bad) bad = group.querySelector("input");
+    if (bad) { say("Please fill in the highlighted fields.", true); bad.focus(); return; }
+    var data = {};
+    new FormData(form).forEach(function (v, k) { if (k !== "interests") data[k] = v; });
+    data["Interested in"] = picked.join(", ");
+    btn.disabled = true; say("Sending…");
+    fetch("https://formsubmit.co/ajax/studioeightwebco@gmail.com", {
+      method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data)
+    }).then(function (r) { return r.json().then(function (j) { if (!r.ok || String(j.success) !== "true") throw new Error(j.message || "failed"); }); })
+      .then(function () { form.reset(); say("Thank you! Your message is on its way, and I’ll be in touch soon."); })
+      .catch(function () { say("Something went wrong. Please email me at studioeightwebco@gmail.com.", true); })
+      .then(function () { btn.disabled = false; });
+  });
+  form.addEventListener("input", function (e) { if (e.target.getAttribute("aria-invalid") === "true") e.target.setAttribute("aria-invalid", "false"); });
+  group.addEventListener("change", function () { group.setAttribute("aria-invalid", "false"); });
+})();
+</script>
 
 <!-- Services accordion: one row open at a time (native in newer browsers via name="services"). -->
 <script>
