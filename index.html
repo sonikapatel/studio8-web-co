@@ -302,7 +302,7 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
 .landing > *, .work > *, .services > * { width: 100%; max-width: 1000px; margin-inline: auto; }
 .services header { max-width: 1000px; }
 .services header .intro { max-width: none; width: 100%; }
-.cards .card { flex: 1 1 0; min-width: 0; width: auto; }
+.cards .card { flex: 1 1 40%; min-width: 0; width: auto; } /* four cards: two per row */
 @media (max-width: 760px) { .cards .card { flex: 1 1 100%; } }
 
 @media (max-width: 760px) {
@@ -411,7 +411,7 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
   <section class="services" id="services" aria-labelledby="services-title">
     <header>
       <h2 id="services-title">What I offer</h2>
-      <p class="intro">Building visual identities and websites for service-based businesses that convert visitors to customers.</p>
+      <p class="intro">Building visual identities, websites and search visibility for service-based businesses that convert visitors to customers.</p>
     </header>
     <div class="cards">
       <article class="card" style="--accent: var(--sage)">
@@ -425,6 +425,10 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
       <article class="card" style="--accent: var(--blue)">
         <div class="head"><h3>A website that turns visitors into customers</h3></div>
         <p class="lead">A fast, mobile-first site with one-tap calling and easy booking, so the people who find you online actually get in touch.</p>
+      </article>
+      <article class="card" style="--accent: var(--plum)">
+        <div class="head"><h3>Found on Google and in AI answers</h3></div>
+        <p class="lead">Your Google Business Profile and website set up so nearby customers find you in search and Maps (SEO), with clear answers to the questions they ask so AI assistants like ChatGPT and Google’s AI Overviews can describe your business accurately (AEO).</p>
       </article>
     </div>
   </section>
@@ -491,6 +495,10 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
       <details class="faq-item">
         <summary>What do I receive at the end?</summary>
         <p>Your launched website, plus a brand style kit with logo files, color palette, typography and social media post templates, ready for you and your team to use.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What are SEO and AEO?</summary>
+        <p>SEO (search engine optimization) helps people find you on Google and Google Maps. I set up your Google Business Profile with the right categories, services, hours, photos and booking link, and build your site with clear page titles, local details and structured data. AEO (answer engine optimization) makes your site easy for AI assistants such as ChatGPT, Perplexity and Google’s AI Overviews to read and quote, by answering the questions your customers actually ask. No one can guarantee rankings, but these are the foundations search engines and AI tools rely on.</p>
       </details>
       <details class="faq-item">
         <summary>Do I own my website and brand files?</summary>
