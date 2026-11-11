@@ -303,7 +303,15 @@ dialog.case::backdrop { background: var(--scrim); }
 .case-grid.screens { gap: 0; border-radius: 14px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 18px 48px -24px rgba(0,0,0,.4); }
 .case-grid.screens img { border-radius: 0; box-shadow: none; }
 .case-grid.tall { max-width: 560px; }
-.case-next { justify-self: start; }
+.site-frame { border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 18px 48px -24px rgba(0,0,0,.4); }
+.site-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #f1efe9; border-bottom: 1px solid var(--line); }
+.site-bar i { width: 10px; height: 10px; border-radius: 50%; background: #d9d4ca; }
+.site-bar span { margin-left: 10px; font-size: 12px; color: var(--ink-soft); background: #fff; border-radius: 999px; padding: 3px 14px; }
+.site-view { height: clamp(360px, 68vh, 680px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.site-view img { display: block; width: 100%; height: auto; }
+.site-view.is-video { height: auto; overflow: hidden; }
+.site-view.is-video video { display: block; width: 100%; height: auto; }
+.site-view:focus-visible { outline: 2px solid var(--accent-live, var(--ink)); outline-offset: -2px; }
 @media (max-width: 760px) {
   .case-bar { padding: 12px 16px; }
   .case-body { padding-left: 16px; padding-right: 16px; }
@@ -869,16 +877,7 @@ dialog.case::backdrop { background: var(--scrim); }
           img("lokahi/social-balance.jpg", "Post: Balance, treatment that achieves your smile goals", ""),
           img("lokahi/social-breath.jpg", "Post: Breath, airway health", ""),
           img("lokahi/social-founder.jpg", "Post: Meet the Founder, Dr. Eric Le", "") ] },
-        { title: "Website", text: "The full homepage, section by section, at desktop width.", cls: "screens", items: [
-          img("lokahi/web-01-hero.jpg", "Hero: Harmony in every smile", ""),
-          img("lokahi/web-02-practice.jpg", "A calm practice in Orange County, with office photos", ""),
-          img("lokahi/web-03-breathing.jpg", "Signs worth a closer look", ""),
-          img("lokahi/web-04-treatments.jpg", "A path for every age: treatments with before and after", ""),
-          img("lokahi/web-05-journey.jpg", "Your smile journey, step by step", ""),
-          img("lokahi/web-06-dr-le.jpg", "Meet Dr. Eric Le", ""),
-          img("lokahi/web-07-faq.jpg", "Frequently asked questions", ""),
-          img("lokahi/web-08-contact.jpg", "Let’s get started: request a consultation form", ""),
-          img("lokahi/web-09-footer.jpg", "Footer", "") ] }
+        { title: "Website", text: "The full homepage. It scrolls on its own; hover or scroll inside to take over.", site: { src: M + "lokahi/site-full.jpg", label: "Lōkahi Orthodontics", alt: "The full Lōkahi Orthodontics homepage" }, items: [] }
       ]
     },
     karishma: {
@@ -886,17 +885,7 @@ dialog.case::backdrop { background: var(--scrim); }
       lede: "Keep it Karishma is career coaching for nurses and advanced practice providers, from a pediatric oncology nurse practitioner. I created the brand identity and designed and built a website that explains her coaching, her story and pricing, and makes booking a free consultation the obvious next step.",
       meta: [["Client", "Karishma"], ["Services", "Brand identity, website"]],
       sections: [
-        { title: "Website", text: "The full homepage, section by section, at desktop width.", video: { src: "media/karishma-site.mp4", poster: "media/karishma-site-poster.jpg", label: "Scrolling through the Keep it Karishma website" }, cls: "screens", items: [
-          img("karishma/web-01-hero.jpg", "Hero: Take the leap in your nursing career", ""),
-          img("karishma/web-02-audience.jpg", "Sound like you?", ""),
-          img("karishma/web-03-coaching.jpg", "Where we can work together: four coaching areas", ""),
-          img("karishma/web-04-how.jpg", "How coaching works in three steps", ""),
-          img("karishma/web-05-meet.jpg", "Meet Karishma, with her career timeline", ""),
-          img("karishma/web-06-quote.jpg", "Client testimonial", ""),
-          img("karishma/web-07-pricing.jpg", "Ways to work with me: pricing", ""),
-          img("karishma/web-08-faq.jpg", "Questions, answered", ""),
-          img("karishma/web-09-consult.jpg", "Ready to take the leap? Consultation form", ""),
-          img("karishma/web-10-footer.jpg", "Footer", "") ] }
+        { title: "Website", text: "The full homepage. It scrolls on its own; hover or scroll inside to take over.", site: { src: M + "karishma/site-full.jpg", label: "Keep it Karishma", alt: "The full Keep it Karishma homepage" }, items: [] }
       ]
     },
     bib: {
@@ -912,8 +901,7 @@ dialog.case::backdrop { background: var(--scrim); }
           img("bib/series-dates.jpg", "Save the date: tour cities and dates", "") ] },
         { title: "Community", text: "The launch event, where guests first saw the new website.", cols: 2, video: { src: "media/bib.mp4", poster: "media/bib-poster.jpg", label: "Beauty in Balance launch event" }, items: [
           img("bib/community.jpg", "Guests talking at a Beauty in Balance event", "") ] },
-        { title: "Website", text: "About page: the mission, meet the founder, and meet the team.", cls: "tall", items: [
-          img("bib/web-about.jpg", "Beauty in Balance about page design", "") ] }
+        { title: "Website", text: "About page: the mission, meet the founder, and meet the team.", site: { src: M + "bib/web-about.jpg", label: "Beauty in Balance", alt: "The Beauty in Balance about page" }, items: [] }
       ]
     },
     fika: {
@@ -924,7 +912,7 @@ dialog.case::backdrop { background: var(--scrim); }
         { title: "Brand", items: [
           img("fika/brand-guide.jpg", "Fika brand guidelines: logo, colors, typography, photography and illustration", "Brand guidelines"),
           img("fika/social.jpg", "Fika social posts", "Social posts") ] },
-        { title: "Website and web app", video: { src: "media/fika-site.mp4", poster: "media/fika-site-poster.jpg", label: "Scrolling through the Fika website" }, cols: 1, items: [
+        { title: "Website and web app", site: { video: "media/fika-site.mp4", poster: "media/fika-site-poster.jpg", label: "fikacreatives.co", alt: "Scrolling through the Fika website" }, cols: 1, items: [
           img("fika/web-upcoming.jpg", "Upcoming Fikas in the web app", "Upcoming 1:1 and group fikas"),
           img("fika/web-profile.jpg", "A creative’s profile with an invite to coffee", "Profiles"),
           img("fika/web-rewards.jpg", "Rewards at partner cafes", "Partner cafe rewards") ] },
@@ -957,6 +945,10 @@ dialog.case::backdrop { background: var(--scrim); }
     h += '<dl class="case-meta">' + c.meta.map(function (m) { return "<div><dt>" + m[0] + "</dt><dd>" + m[1] + "</dd></div>"; }).join("") + "</dl></header>";
     c.sections.forEach(function (s) {
       h += '<section class="case-sec"><h3>' + s.title + "</h3>" + (s.text ? "<p>" + s.text + "</p>" : "");
+      if (s.site) h += '<div class="site-frame"><div class="site-bar" aria-hidden="true"><i></i><i></i><i></i><span>' + s.site.label + '</span></div>' +
+        (s.site.video
+          ? '<div class="site-view is-video"><video autoplay muted loop playsinline preload="metadata" poster="' + s.site.poster + '" aria-label="' + esc(s.site.alt) + '"><source src="' + s.site.video + '" type="video/mp4"></video></div>'
+          : '<div class="site-view" tabindex="0" aria-label="' + esc(s.site.alt) + ', scrollable"><img src="' + s.site.src + '" alt="' + esc(s.site.alt) + '" decoding="async"></div>') + "</div>";
       if (s.video) h += '<div class="case-grid' + (s.cls === "tall" ? " tall" : "") + '"><figure><video autoplay muted loop playsinline preload="metadata" poster="' + s.video.poster + '" aria-label="' + esc(s.video.label) + '"><source src="' + s.video.src + '" type="video/mp4"></video></figure></div>';
       if (s.items.length) {
         h += '<div class="case-grid ' + (s.cls || "") + '" style="--cols:' + (s.cls === "screens" || s.cls === "tall" ? 1 : (s.cols || 1)) + '">';
@@ -968,6 +960,35 @@ dialog.case::backdrop { background: var(--scrim); }
       h += "</section>";
     });
     body.innerHTML = h;
+    Array.prototype.forEach.call(body.querySelectorAll(".site-view:not(.is-video)"), autoScroll);
+  }
+
+  // Slowly scroll a site tile top to bottom, pause, return to the top, repeat.
+  // Hovering, touching, scrolling or focusing it hands control to the visitor.
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function autoScroll(view) {
+    if (reduceMotion) return;
+    var held = false, seen = false, wait = 900, last = 0, pos = 0;
+    if (window.IntersectionObserver) new IntersectionObserver(function (es) { seen = es[0].isIntersecting; last = 0; }, { root: dlg, threshold: 0.4 }).observe(view);
+    else seen = true;
+    function hold() { held = true; }
+    function release() { held = false; pos = view.scrollTop; last = 0; }
+    view.addEventListener("pointerenter", hold); view.addEventListener("pointerleave", release);
+    view.addEventListener("focus", hold); view.addEventListener("blur", release);
+    view.addEventListener("touchstart", hold, { passive: true });
+    view.addEventListener("wheel", hold, { passive: true });
+    function step(t) {
+      if (!dlg.open || !view.isConnected) return;
+      var dt = last ? Math.min(t - last, 64) : 0; last = t;
+      if (!held && seen) {
+        var max = view.scrollHeight - view.clientHeight;
+        if (wait > 0) wait -= dt;
+        else if (pos >= max - 1) { wait = 1800; pos = 0; view.scrollTo({ top: 0, behavior: "smooth" }); }
+        else { pos = Math.min(max, pos + dt * 0.09); view.scrollTop = pos; if (pos >= max - 1) wait = 1500; }
+      }
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
   }
 
   function open(slug, push) {
@@ -981,6 +1002,7 @@ dialog.case::backdrop { background: var(--scrim); }
   }
   function close() { if (dlg.open) dlg.close(); }
   dlg.addEventListener("close", function () {
+    if (dlg.open) return;   // reopened on another case before this event fired
     document.documentElement.classList.remove("case-open");
     body.innerHTML = "";
     if (location.hash.indexOf("#case-") === 0) history.replaceState(null, "", location.pathname + location.search);
