@@ -18,7 +18,7 @@
 <title>Studio8 web co</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Josefin+Sans:wght@700&display=swap">
 <style>
 /* Layout: full-width landing (wordmark, pitch, and all three case studies in one row above the fold),
    then a full-width case study per project. One fixed aurora canvas sits behind everything;
@@ -372,6 +372,32 @@ dialog.case::backdrop { background: var(--scrim); }
 .cards .card { flex: 1 1 40%; min-width: 0; width: auto; } /* four cards: two per row */
 @media (max-width: 760px) { .cards .card { flex: 1 1 100%; } }
 
+/* Hero industries: each phrase carries its icon and opens a popover with what I offer that kind of business */
+@font-face { font-family: "Ivy Presto Italic"; src: url("media/fonts/IvyPrestoDisplay-LightItalic.otf") format("opentype"); font-style: italic; font-weight: 300; font-display: swap; }
+/* Neue Haas Grotesk: no file is shipped. local() uses a copy installed on the viewer's machine (the trial on Sonika's Mac,
+   or a licensed Pro install). Add a licensed web file or Adobe Fonts kit before relying on it for visitors. */
+@font-face { font-family: "NHG Text"; src: local("NHaasGroteskTXPro-65Md"), local("Neue Haas Grotesk Text Pro Medium"), local("HaasGrotTextTrial-65Medium"), local("HaasGrot Text 65 Md Trial"); font-weight: 500; font-display: swap; }
+.hero .statement .ind-term { display: inline; padding: 0; margin: 0; border: 0; background: none; font: inherit; font-weight: 600; color: var(--ink); cursor: pointer; text-decoration: none; }
+.hero .statement .nw, .hero .statement .ind-term { white-space: nowrap; }
+/* One typeface per industry */
+.hero .statement .ind-term[popovertarget="ind-aesthetics"] { font-family: "Ivy Presto Italic", "Cormorant Garamond", Georgia, serif; font-style: italic; font-weight: 300; font-size: 1.2em; letter-spacing: 0.005em; }
+.hero .statement .ind-term[popovertarget="ind-pro"] { font-family: "NHG Text", "neue-haas-grotesk-text", "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 500; letter-spacing: -0.005em; }
+.hero .statement .ind-term[popovertarget="ind-dental"] { font-family: "Josefin Sans", "Be Vietnam Pro", Arial, sans-serif; font-weight: 700; font-size: 1.05em; letter-spacing: 0.01em; }
+.hero .statement .ind-term svg { width: 1.05em; height: 1.05em; margin-right: 0.22em; vertical-align: -0.17em; color: var(--accent); }
+.hero .statement .ind-term:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+.ind-pop { position: fixed; inset: auto; margin: 0; width: min(360px, calc(100vw - 32px)); padding: 20px; border: 0; border-radius: 20px; background: var(--card-solid); color: var(--card-ink); box-shadow: 0 18px 50px rgba(18, 23, 18, 0.18); }
+.ind-pop::backdrop { background: transparent; }
+.ind-pop .ph { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding-right: 36px; } /* clear of the close button */
+.ind-pop .ph .ic { flex: none; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: color-mix(in srgb, var(--accent) 16%, white); color: var(--accent); }
+.ind-pop .ph .ic svg { width: 22px; height: 22px; }
+.ind-pop h3 { margin: 0; font-size: 18px; font-weight: 600; line-height: 1.3; }
+.ind-pop ul { margin: 0; padding-left: 18px; display: grid; gap: 7px; font-size: 15px; line-height: 1.5; color: var(--card-ink); }
+.ind-pop .seen { margin: 14px 0 0; font-size: 14px; color: var(--card-muted); }
+.ind-pop .seen a { color: inherit; }
+.ind-pop .close { position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; border-radius: 999px; display: grid; place-items: center; color: var(--card-muted); }
+.ind-pop .close:hover { background: rgba(0, 0, 0, 0.05); }
+.ind-pop .close:focus-visible { outline: 2px solid var(--card-ink); outline-offset: 2px; }
+
 @media (max-width: 760px) {
   .strip { flex-direction: column; max-width: 100%; }
   .tile[data-i] { flex: none; }
@@ -406,7 +432,7 @@ dialog.case::backdrop { background: var(--scrim); }
         <span class="big" aria-hidden="true">Studio8</span>
         <span class="small" aria-hidden="true">web co</span>
       </h1>
-      <p class="statement">You’ve spent years perfecting your craft and opening your doors. You deserve a <strong class="hl">visual identity and website</strong> that reflect the quality and care of what you offer, whether that’s aesthetics, professional services, or a dental or orthodontic practice.</p>
+      <p class="statement">You’ve spent years perfecting your craft and opening your doors. You deserve a <strong class="hl">visual identity and website</strong> that reflect the quality and care of what you offer, whether that’s <span class="nw"><button type="button" class="ind-term" style="--accent: var(--blush)" popovertarget="ind-aesthetics" aria-expanded="false" aria-controls="ind-aesthetics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>aesthetics</button>,</span> <span class="nw"><button type="button" class="ind-term" style="--accent: var(--sage)" popovertarget="ind-pro" aria-expanded="false" aria-controls="ind-pro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7"/><path d="M3 12.5h18M12 11.5v2"/></svg>professional services</button>,</span> or a <button type="button" class="ind-term" style="--accent: var(--blue)" popovertarget="ind-dental" aria-expanded="false" aria-controls="ind-dental"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5.5c-1.6-1.4-3.3-2-5-1.6C4.6 4.5 3.6 7 4.2 9.8c.5 2.3 1.3 3.7 1.6 6.4.3 2.4.8 4.3 2 4.3 1.6 0 1.7-3.2 2.4-5 .4-1 1-1.4 1.8-1.4s1.4.4 1.8 1.4c.7 1.8.8 5 2.4 5 1.2 0 1.7-1.9 2-4.3.3-2.7 1.1-4.1 1.6-6.4.6-2.8-.4-5.3-2.8-5.9-1.7-.4-3.4.2-5 1.6z"/></svg>dental or orthodontic practice</button>.</p>
       <a class="cta-primary" href="#contact">Let’s talk about your practice <span aria-hidden="true">→</span></a>
     </div>
 
@@ -517,6 +543,38 @@ dialog.case::backdrop { background: var(--scrim); }
     <header>
       <h2 id="services-title">What I offer</h2>
       <p class="intro">Building visual identities, websites and search visibility for service-based businesses that convert visitors to customers.</p>
+      <div id="ind-aesthetics" class="ind-pop" popover role="dialog" aria-labelledby="ind-aesthetics-t" style="--accent: var(--blush)">
+        <div class="ph"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span><h3 id="ind-aesthetics-t">For aesthetics &amp; med spas</h3></div>
+        <ul>
+          <li>A page for each treatment with pricing, downtime and what to expect</li>
+          <li>Before and after galleries and provider bios that build trust</li>
+          <li>Booking through the system you already use, one tap from every page</li>
+          <li>Specials, memberships and gift cards that are easy to find</li>
+        </ul>
+        <p class="seen">See it in <a href="#work">Beauty in Balance and Keep it Karishma</a></p>
+        <button type="button" class="close" popovertarget="ind-aesthetics" popovertargetaction="hide" aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div id="ind-dental" class="ind-pop" popover role="dialog" aria-labelledby="ind-dental-t" style="--accent: var(--blue)">
+        <div class="ph"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5c-1.6-1.4-3.3-2-5-1.6C4.6 4.5 3.6 7 4.2 9.8c.5 2.3 1.3 3.7 1.6 6.4.3 2.4.8 4.3 2 4.3 1.6 0 1.7-3.2 2.4-5 .4-1 1-1.4 1.8-1.4s1.4.4 1.8 1.4c.7 1.8.8 5 2.4 5 1.2 0 1.7-1.9 2-4.3.3-2.7 1.1-4.1 1.6-6.4.6-2.8-.4-5.3-2.8-5.9-1.7-.4-3.4.2-5 1.6z"/></svg></span><h3 id="ind-dental-t">For dental &amp; orthodontic practices</h3></div>
+        <ul>
+          <li>Treatment pages patients understand, from first visits to clear aligners</li>
+          <li>Doctor and team bios, insurance and financing details in one place</li>
+          <li>Appointment requests, new-patient forms and one-tap calling</li>
+          <li>Found when nearby families search for a dentist or orthodontist</li>
+        </ul>
+        <p class="seen">See it in <a href="#work">Lōkahi Orthodontics</a></p>
+        <button type="button" class="close" popovertarget="ind-dental" popovertargetaction="hide" aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div id="ind-pro" class="ind-pop" popover role="dialog" aria-labelledby="ind-pro-t" style="--accent: var(--sage)">
+        <div class="ph"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7"/><path d="M3 12.5h18M12 11.5v2"/></svg></span><h3 id="ind-pro-t">For professional services</h3></div>
+        <ul>
+          <li>Clear pages for each service and who you help, in plain language</li>
+          <li>Credentials, reviews and your approach up front, so clients trust you before they call</li>
+          <li>Consultation booking and intake forms that land in your inbox</li>
+          <li>Found when people nearby search for your service</li>
+        </ul>
+        <button type="button" class="close" popovertarget="ind-pro" popovertargetaction="hide" aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
     </header>
     <div class="cards">
       <article class="card" style="--accent: var(--sage)">
@@ -1043,6 +1101,33 @@ dialog.case::backdrop { background: var(--scrim); }
     e.preventDefault();
     load().then(function () { window.Calendly.initPopupWidget({ url: URL }); })
           .catch(function () { window.open(btn.href, "_blank", "noopener"); });
+  });
+})();
+</script>
+<script>
+/* Industry popovers: open beside their button, track aria-expanded, follow scroll and resize. */
+(function () {
+  var btns = document.querySelectorAll('.ind-term[popovertarget]');
+  if (!btns.length) return;
+  function place(btn, pop) {
+    var r = btn.getBoundingClientRect(), w = pop.offsetWidth, h = pop.offsetHeight, g = 10, m = 16;
+    var left = Math.min(Math.max(m, r.left), window.innerWidth - w - m);
+    var top = r.bottom + g;
+    if (top + h > window.innerHeight - m && r.top - g - h > m) top = r.top - g - h;   // flip above if no room below
+    pop.style.left = left + 'px'; pop.style.top = Math.max(m, top) + 'px';
+  }
+  btns.forEach(function (btn) {
+    var pop = document.getElementById(btn.getAttribute('popovertarget'));
+    if (!pop || !pop.showPopover) return;   // very old browsers: buttons stay plain labels
+    pop.addEventListener('toggle', function (e) {
+      var open = e.newState === 'open';
+      btn.setAttribute('aria-expanded', String(open));
+      if (open) place(btn, pop);
+    });
+    var follow = function () { if (pop.matches(':popover-open')) place(btn, pop); };
+    window.addEventListener('scroll', follow, { passive: true });
+    window.addEventListener('resize', follow);
+    pop.querySelectorAll('a[href^="#"]').forEach(function (a) { a.addEventListener('click', function () { pop.hidePopover(); }); });
   });
 })();
 </script>
