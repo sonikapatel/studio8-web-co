@@ -165,7 +165,7 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
 .marker svg { width: 16px; height: 16px; }
 .step-body { display: grid; gap: 6px; min-width: 0; padding-top: 2px; }
 .when { font-size: var(--step--1); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
-.step h3 { margin: 0; font-family: var(--font); font-weight: 600; font-size: 26px; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
+.step h3 { margin: 0; font-family: var(--font); font-weight: 600; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
 .step p { margin: 0; line-height: 1.65; color: var(--ink); opacity: 0.86; }
 @media (prefers-reduced-motion: reduce) { .step { opacity: 1; transition: none; } .steps::after { height: 100%; } }
 @media (max-width: 760px) {
@@ -175,7 +175,6 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
   .process h2 { font-size: 28px; }
   .steps { gap: 72px; padding: 24px 0 24px; }
   .step h3 { font-size: 20px; }
-  .card h3 { font-size: 18px; }
 }
 
 /* About */
@@ -259,7 +258,7 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
 }
 .p-text { display: flex; flex-direction: column; justify-content: center; text-align: left; min-width: 0; }
 .p-kind { font-size: 16px; font-weight: 500; line-height: 2; letter-spacing: -0.03em; text-transform: uppercase; color: var(--card-muted); }
-.p-text h3 { margin: 0; font-family: var(--font); font-weight: 500; font-size: 24px; line-height: 1.4; letter-spacing: -0.03em; color: var(--card-ink); text-wrap: balance; }
+.p-text h3 { margin: 0; font-family: var(--font); font-weight: 600; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; color: var(--card-ink); text-wrap: balance; }
 .p-text p { margin: 0; font-size: 13.5px; line-height: 1.7; letter-spacing: -0.03em; color: var(--card-ink); }
 .p-media { position: relative; height: 260px; width: auto; aspect-ratio: var(--ar, 2.17); max-width: 100%; justify-self: end; }
 @media (max-width: 1100px) { .p-media { height: auto; width: min(100%, calc(260px * var(--ar, 2.17))); } }
@@ -276,19 +275,19 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
 
 /* Client reviews */
 .reviews { padding: clamp(48px, 10vh, 120px) var(--gutter) clamp(16px, 4vh, 40px); display: grid; gap: clamp(24px, 4vh, 40px); }
-.reviews > * { width: 100%; max-width: 1000px; margin-inline: auto; }
+.reviews header { display: grid; gap: 18px; }
 .reviews h2 { margin: 0; font-family: var(--font); font-weight: 800; font-size: 32px; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); }
-.quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); }
-.quote { position: relative; overflow: hidden; margin: 0; padding: 24px 22px 22px; border-radius: 24px; background: var(--card-glass); display: flex; flex-direction: column; justify-content: space-between; gap: 20px;
-  -webkit-backdrop-filter: blur(28px) saturate(1.1); backdrop-filter: blur(28px) saturate(1.1); }
-.quote::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 45%, white)); }
-.quote blockquote { margin: 0; }
-.quote blockquote p { margin: 0; line-height: 1.65; color: var(--ink); opacity: 0.86; }
-.quote blockquote p::before { content: "“"; } .quote blockquote p::after { content: "”"; }
-.quote figcaption { display: grid; gap: 2px; font-size: var(--step--1); }
+/* Open editorial columns, not glass cards, so reviews read differently from the service cards above */
+.quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px); }
+.quote { margin: 0; padding: 4px 0 0 22px; border-left: 2px solid var(--accent); display: flex; flex-direction: column; justify-content: space-between; gap: 22px; }
+.quote blockquote { margin: 0; position: relative; }
+.quote blockquote::before { content: "“"; display: block; height: 0.5em; margin: -0.08em 0 14px -0.04em; font-family: Georgia, "Times New Roman", serif; font-size: 72px; line-height: 1; color: var(--accent); }
+.quote blockquote p { margin: 0; font-size: 1.06rem; line-height: 1.6; letter-spacing: -0.005em; color: var(--ink); }
+.quote figcaption { display: grid; grid-template-columns: 40px 1fr; column-gap: 12px; align-items: center; font-size: var(--step--1); line-height: 1.35; }
+.quote figcaption img { grid-row: span 2; width: 40px; height: 40px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--accent); }
 .quote figcaption strong { font-weight: 700; color: var(--ink); }
 .quote figcaption span { color: var(--ink-soft); }
-@media (max-width: 960px) { .quotes { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 960px) { .quotes { grid-template-columns: minmax(0, 1fr); gap: 36px; } }
 @media (max-width: 760px) { .reviews { padding-top: 48px; } .reviews h2 { font-size: 28px; } }
 
 /* Expertise & services */
@@ -296,7 +295,7 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
 .services header { display: grid; gap: 18px; max-width: 760px; }
 .eyebrow { margin: 0; font-size: var(--step--1); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
 .services h2 { margin: 0; font-family: var(--font); font-weight: 800; font-size: 32px; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
-.services .intro, .work .intro { margin: 0; font-size: var(--step-0); line-height: 1.6; color: var(--ink-soft); max-width: 40ch; } /* same size as the process intro */
+.services .intro, .work .intro, .reviews .intro { margin: 0; font-size: var(--step-0); line-height: 1.6; color: var(--ink-soft); max-width: 40ch; } /* same size as the process intro */
 .cards { display: flex; flex-wrap: wrap; gap: clamp(16px, 2vw, 28px); }
 .cards .card { width: 350px; max-width: 100%; height: auto; }
 .card {
@@ -310,15 +309,15 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
 .card .head { display: flex; align-items: center; gap: 18px; }
 .card .icon { flex: none; width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center; background: color-mix(in srgb, var(--accent) 14%, white); color: var(--accent); }
 .card .icon svg { width: 26px; height: 26px; }
-.card h3 { margin: 0; font-family: var(--font); font-weight: 600; font-size: 22px; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.card h3 { margin: 0; font-family: var(--font); font-weight: 600; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
 .card .lead { margin: 0; font-size: inherit; font-weight: 400; line-height: 1.65; color: var(--ink); opacity: 0.86; }
 .card .body { margin: 0; color: var(--ink); opacity: 0.82; line-height: 1.65; }
 @media (max-width: 960px) { .cards { grid-template-columns: minmax(0, 1fr); } }
 
 /* Content column: max 1000px on wider screens */
-.landing > *, .work > *, .services > * { width: 100%; max-width: 1000px; margin-inline: auto; }
+.landing > *, .work > *, .reviews > *, .services > * { width: 100%; max-width: 1000px; margin-inline: auto; }
 .services header { max-width: 1000px; }
-.services header .intro { max-width: none; width: 100%; }
+.services header .intro, .reviews header .intro { max-width: none; width: 100%; }
 .cards .card { flex: 1 1 40%; min-width: 0; width: auto; } /* four cards: two per row */
 @media (max-width: 760px) { .cards .card { flex: 1 1 100%; } }
 
@@ -340,7 +339,7 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
   .services { padding-top: 48px; padding-bottom: 32px; gap: 24px; }
   .contact { padding-top: 24px; padding-bottom: 64px; }
   .work h2, .services h2, .contact h2 { font-size: 28px; }
-  .p-text h3 { font-size: 22px; }
+  .p-text h3, .card h3 { font-size: 20px; } /* after .card h3 so it wins on phones */
   .stack { gap: 16px; }
 }
 
@@ -439,19 +438,22 @@ a:focus-visible, .bar nav button:focus-visible { outline: 2px solid var(--ink); 
     </div>
   </section>
   <section class="reviews" id="reviews" aria-labelledby="reviews-title">
-    <h2 id="reviews-title">What clients say</h2>
+    <header>
+      <h2 id="reviews-title">What clients say</h2>
+      <p class="intro">Founders and practice owners on turning their vision into a brand and website people find.</p>
+    </header>
     <div class="quotes">
       <figure class="quote" style="--accent: var(--sage)">
         <blockquote><p>Opening a new practice meant a hundred decisions at once, and Sonika made the brand one of the easiest. She took my rough ideas for Lōkahi and turned them into an identity that feels calm, modern and unmistakably ours, then carried it straight into a website my team can update on our own. It finally looks like the practice we set out to build.</p></blockquote>
-        <figcaption><strong>Dr. Eric Le</strong><span>Lōkahi Orthodontics</span></figcaption>
+        <figcaption><img src="media/review-eric.jpg" alt="" width="40" height="40" loading="lazy"><strong>Dr. Eric Le</strong><span>Lōkahi Orthodontics</span></figcaption>
       </figure>
       <figure class="quote" style="--accent: var(--plum)">
         <blockquote><p>I knew how I wanted Keep it Karishma to feel but couldn’t put it into words. Sonika could. She knew exactly how to take my vision and shape it into a digital identity that sounds like me, and a website that helps the nurses and NPs I coach actually find me. She was so helpful at every step that I never felt lost in the process.</p></blockquote>
-        <figcaption><strong>Karishma</strong><span>Keep it Karishma</span></figcaption>
+        <figcaption><img src="media/review-karishma.jpg" alt="" width="40" height="40" loading="lazy"><strong>Karishma</strong><span>Keep it Karishma</span></figcaption>
       </figure>
       <figure class="quote" style="--accent: var(--blush)">
         <blockquote><p>Sonika got our brand up to speed fast. We went from scattered posts and a look that no longer fit to a cohesive identity, reflected in a website that feels like walking into our space. Watching guests scroll through it at our launch event, I knew people would finally see us the way we see ourselves through the website and presence she built.</p></blockquote>
-        <figcaption><strong>Alisha</strong><span>Beauty in Balance</span></figcaption>
+        <figcaption><img src="media/review-alisha.jpg" alt="" width="40" height="40" loading="lazy"><strong>Alisha</strong><span>Beauty in Balance</span></figcaption>
       </figure>
     </div>
   </section>
