@@ -322,6 +322,7 @@ dialog.case::backdrop { background: var(--scrim); }
 .case-grid.screens { gap: 0; border-radius: 14px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 18px 48px -24px rgba(0,0,0,.4); }
 .case-grid.screens img { border-radius: 0; box-shadow: none; }
 .case-grid.tall { max-width: 560px; }
+.case-grid.reel { max-width: 320px; }
 .site-frame { border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 18px 48px -24px rgba(0,0,0,.4); }
 .site-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #f1efe9; border-bottom: 1px solid var(--line); }
 .site-bar i { width: 10px; height: 10px; border-radius: 50%; background: #d9d4ca; }
@@ -1158,6 +1159,7 @@ dialog.case::backdrop { background: var(--scrim); }
           img("bib/brand-intro.jpg", "Beauty in Balance brand introduction with palette and founder photo", "Brand introduction"),
           img("bib/brand-mark.jpg", "The BB monogram in an oval frame, Est 2024, cream on charcoal", "BB monogram"),
           img("bib/brand-mark-red.jpg", "The script BB mark in cream on a rust-red circle", "BB mark") ] },
+        { title: "Instagram reel", text: "A brand reel that moves through each style of the identity: the monogram, the palette, the wordmarks and the brand applied to a candle.", cls: "reel", video: { src: "media/bib-reel.mp4", poster: "media/bib-reel-poster.jpg", label: "Beauty in Balance brand reel cycling through the monogram, colors, wordmarks and a branded candle" }, items: [] },
         { title: "The Signature Series", text: "Social and event content for the multi-city tour: Chicago, San Francisco, Washington D.C. and New York.", cols: 3, items: [
           img("bib/series-cover.jpg", "The Signature Series announcement", ""),
           img("bib/series-pillars.jpg", "Each pillar of branding, revealed soon", ""),
@@ -1197,7 +1199,7 @@ dialog.case::backdrop { background: var(--scrim); }
         (s.site.video
           ? '<div class="site-view is-video"><video autoplay muted loop playsinline preload="metadata" poster="' + s.site.poster + '" aria-label="' + esc(s.site.alt) + '"><source src="' + s.site.video + '" type="video/mp4"></video></div>'
           : '<div class="site-view" tabindex="0" aria-label="' + esc(s.site.alt) + ', scrollable"><img src="' + s.site.src + '" alt="' + esc(s.site.alt) + '" decoding="async"></div>') + "</div>";
-      if (s.video) h += '<div class="case-grid' + (s.cls === "tall" ? " tall" : "") + '"><figure><video autoplay muted loop playsinline preload="metadata" poster="' + s.video.poster + '" aria-label="' + esc(s.video.label) + '"><source src="' + s.video.src + '" type="video/mp4"></video></figure></div>';
+      if (s.video) h += '<div class="case-grid' + (s.cls === "tall" || s.cls === "reel" ? " " + s.cls : "") + '"><figure><video autoplay muted loop playsinline preload="metadata" poster="' + s.video.poster + '" aria-label="' + esc(s.video.label) + '"><source src="' + s.video.src + '" type="video/mp4"></video></figure></div>';
       if (s.items.length) {
         h += '<div class="case-grid ' + (s.cls || "") + '" style="--cols:' + (s.cls === "screens" || s.cls === "tall" ? 1 : (s.cols || 1)) + '">';
         s.items.forEach(function (it) {
