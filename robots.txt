@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://studio8web.sonikapatel.com/sitemap.xml
