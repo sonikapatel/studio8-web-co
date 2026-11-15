@@ -414,6 +414,18 @@ dialog.case::backdrop { background: var(--scrim); }
 @media (max-width: 960px) { .quotes { grid-template-columns: minmax(0, 1fr); gap: 36px; } }
 @media (max-width: 760px) { .reviews { padding-top: 48px; } .reviews h2 { font-size: 28px; } }
 
+/* Why Studio8: the value proposition, four points with a short accent bar */
+.why { padding: clamp(64px, 12vh, 140px) var(--gutter) 0; display: grid; gap: clamp(28px, 5vh, 48px); }
+.why header { display: grid; gap: 18px; }
+.why h2 { margin: 0; font-family: var(--font); font-weight: 800; font-size: 32px; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.why .intro { margin: 0; font-size: var(--step-0); line-height: 1.6; color: var(--ink-soft); }
+.why-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 4vh, 44px) clamp(32px, 5vw, 72px); }
+.why-list li { display: grid; gap: 10px; align-content: start; }
+.why-list li::before { content: ""; width: 28px; height: 3px; border-radius: 2px; background: var(--accent); margin-bottom: 4px; }
+.why-list h3 { margin: 0; font-family: var(--font); font-weight: 700; font-size: clamp(20px, 2.2vw, 24px); line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
+.why-list p { margin: 0; line-height: 1.65; color: var(--ink); opacity: 0.86; }
+@media (max-width: 760px) { .why { padding-top: 56px; } .why h2 { font-size: 28px; } .why-list { grid-template-columns: minmax(0, 1fr); } }
+
 /* Expertise & services */
 .services { padding: clamp(64px, 12vh, 140px) var(--gutter) clamp(64px, 12vh, 120px); display: grid; gap: clamp(36px, 6vh, 64px); }
 .services header { display: grid; gap: 18px; max-width: 760px; }
@@ -439,7 +451,7 @@ dialog.case::backdrop { background: var(--scrim); }
 @media (max-width: 960px) { .cards { grid-template-columns: minmax(0, 1fr); } }
 
 /* Content column: max 1000px on wider screens */
-.landing > *, .work > *, .reviews > *, .services > * { width: 100%; max-width: 1000px; margin-inline: auto; }
+.landing > *, .work > *, .reviews > *, .why > *, .services > * { width: 100%; max-width: 1000px; margin-inline: auto; }
 .services header { max-width: 1000px; }
 .services header .intro, .reviews header .intro { max-width: none; width: 100%; }
 .cards .card { flex: 1 1 40%; min-width: 0; width: auto; } /* four cards: two per row */
@@ -618,6 +630,30 @@ dialog.case::backdrop { background: var(--scrim); }
         <figcaption><img src="media/review-alisha.jpg" alt="" width="40" height="40" loading="lazy"><strong>Alisha</strong><span>Beauty in Balance</span></figcaption>
       </figure>
     </div>
+  </section>
+  <section class="why" id="why" aria-labelledby="why-title">
+    <header>
+      <h2 id="why-title">Why Studio8 Web Co</h2>
+      <p class="intro">A brand built around your story, and a website you can run on your own. Here’s what makes working with Studio8 different.</p>
+    </header>
+    <ul class="why-list">
+      <li style="--accent: var(--sage)">
+        <h3>A brand that’s unmistakably yours</h3>
+        <p>Your logo, colors, type and voice start from who you are and why you do what you do, not a template. The result is a brand and style that feel like you, so the right customers recognize you at first glance.</p>
+      </li>
+      <li style="--accent: var(--blush)">
+        <h3>Update your site yourself</h3>
+        <p>Your website is built in Framer and set up with a CMS, so you can change pages, services, team bios and posts on your own in minutes, without touching code or waiting on a developer.</p>
+      </li>
+      <li style="--accent: var(--blue)">
+        <h3>One designer, first call to launch</h3>
+        <p>You work directly with me the whole way, from strategy and visual direction to the finished site, so nothing gets lost between a strategist, a designer and a developer.</p>
+      </li>
+      <li style="--accent: var(--plum)">
+        <h3>Everything is yours to keep</h3>
+        <p>Your website, logo files, color palette, typography and social media templates are delivered as assets you own, so you are never locked in.</p>
+      </li>
+    </ul>
   </section>
   <section class="services" id="services" aria-labelledby="services-title">
     <header>
